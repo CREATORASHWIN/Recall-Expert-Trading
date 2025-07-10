@@ -1,0 +1,44 @@
+<div class="bg-red-100 min-h-screen flex flex-col">
+  <!-- NAVBAR -->
+  <nav class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center space-x-3">
+      <img src="logo.jpg" alt="Logo" class="h-10 w-auto" />
+      <span class="text-xl font-bold"> RECALL EXPERT TRADING FZ LLC</span>
+    </div>
+
+    <!-- Mobile menu toggle button (only shows on small screens) -->
+    <button class="md:hidden" (click)="toggleMenu()">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+    <!-- Desktop menu -->
+    <div class="hidden md:flex space-x-4">
+      <a routerLink="/" routerLinkActive="font-bold" class="hover:underline">Home</a>
+      <a routerLink="/about" routerLinkActive="font-bold" class="hover:underline">About</a>
+      <a routerLink="/services" routerLinkActive="font-bold" class="hover:underline">Services</a>
+      <a routerLink="/contact" routerLinkActive="font-bold" class="hover:underline">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ✅ Mobile menu — placed RIGHT BELOW nav -->
+  <div *ngIf="isMenuOpen" class="md:hidden bg-gray-800 text-white flex flex-col space-y-2 px-6 py-4">
+    <a routerLink="/" routerLinkActive="font-bold" class="hover:underline">Home</a>
+    <a routerLink="/about" routerLinkActive="font-bold" class="hover:underline">About</a>
+    <a routerLink="/services" routerLinkActive="font-bold" class="hover:underline">Services</a>
+    <a routerLink="/contact" routerLinkActive="font-bold" class="hover:underline">Contact</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-white text-center p-4 mt-12">
+    &copy; 2022 RECALL  EXPERT TRADING FZ LLC. All rights reserved.
+  </footer>
+</div>

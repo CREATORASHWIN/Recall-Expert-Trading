@@ -1,0 +1,31 @@
+<section class="p-8 bg-white rounded-xl shadow-lg max-w-5xl mx-auto my-10">
+  <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">📞 Contact Us</h2>
+
+  <!-- Contact Details -->
+  <div class="grid md:grid-cols-2 gap-8 mb-8">
+    <div>
+      <p class="text-lg font-medium">📍 RAKEZ Compass Coworking Centre</p>
+      <a href="https://g.co/kgs/9Q26ci2" target="_blank" class="text-blue-600 underline">View on Google Maps</a>
+      <p class="mt-4 text-lg font-medium">📍 Dubai Bin Haider Building</p>
+    </div>
+    <div>
+      <p class="text-lg font-medium">📧 Email:</p>
+      <a href="mailto:info&#64;recallexperttrading.com" class="text-blue-600 underline">info&#64;recallexperttrading.com</a>
+
+      
+      <p class="mt-4 text-lg font-medium">💬 WhatsApp:</p>
+      <a href="https://wa.me/971522037095" target="_blank">
+        <img src="WhatsApp.svg" alt="WhatsApp" class="w-10 inline-block" />
+        Chat with us
+      </a>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <form #contactForm="ngForm" (ngSubmit)="submitForm()" class="space-y-4">
+    <input type="text" name="name" [(ngModel)]="contact.name" required placeholder="Your Name" class="w-full p-3 border rounded-lg" />
+    <input type="email" name="email" [(ngModel)]="contact.email" required placeholder="Your Email" class="w-full p-3 border rounded-lg" />
+    <textarea name="message" [(ngModel)]="contact.message" rows="5" required placeholder="Your Message" class="w-full p-3 border rounded-lg"></textarea>
+    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">Send Message</button>
+  </form>
+</section>
