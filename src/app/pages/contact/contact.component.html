@@ -1,68 +1,92 @@
 <section class="p-8 bg-gradient-to-r from-white via-blue-50 to-white rounded-2xl shadow-2xl max-w-6xl mx-auto my-12">
   <h2 class="text-4xl font-bold text-center text-gray-800 mb-10">📞 Get in Touch</h2>
 
-  <!-- Contact Info Grid -->
   <div class="grid md:grid-cols-2 gap-10 mb-10">
+    <!-- Contact Info -->
     <div class="space-y-6">
-
-      <!-- Location 1 -->
       <div class="relative group flex items-start gap-4">
-        <span class="text-2xl cursor-pointer" title="RAKEZ Office">📍</span>
+        <span class="text-2xl">📍</span>
         <div>
           <p class="text-lg font-semibold text-gray-800">RAKEZ Compass Coworking Centre</p>
           <a href="https://g.co/kgs/9Q26ci2" target="_blank" class="text-blue-600 underline text-sm">View on Google Maps</a>
         </div>
-        <div class="absolute top-full left-0 mt-2 hidden group-hover:block bg-gray-800 text-white text-sm px-3 py-1 rounded shadow z-10">
-          RAK Economic Zone Office
-        </div>
       </div>
 
-      <!-- Location 2 -->
       <div class="relative group flex items-start gap-4">
-        <span class="text-2xl cursor-pointer" title="Dubai Office">🏢</span>
-        <p class="text-lg font-semibold text-gray-800">Dubai Bin Haider Building</p>
-        <div class="absolute top-full left-0 mt-2 hidden group-hover:block bg-gray-800 text-white text-sm px-3 py-1 rounded shadow z-10">
-          Main Dubai Location
-        </div>
+        <span class="text-2xl">🏢</span>
+        <p class="text-lg font-semibold text-gray-800">AL KHABAISI ,PORT SAEED SIGNAL , BIN HAIDER BUILDING DUBAI</p>
       </div>
 
-      <!-- Email -->
       <div class="relative group flex items-start gap-4">
-        <span class="text-2xl cursor-pointer" title="Click to Email">📧</span>
-        <a href="mailto:info&#64;recallexperttrading.com" class="text-blue-600 underline text-lg">info&#64;recallexperttrading.com</a>
-        <div class="absolute top-full left-0 mt-2 hidden group-hover:block bg-gray-800 text-white text-sm px-3 py-1 rounded shadow z-10">
-          Email us anytime
-        </div>
+        <span class="text-2xl">📧</span>
+        <a href="mailto:info@recallexperttrading.com" class="text-blue-600 underline text-lg">info&#64;recallexperttrading.com</a>
       </div>
 
-      <!-- Landline -->
       <div class="relative group flex items-start gap-4">
-        <span class="text-2xl cursor-pointer" title="Call Landline">📞</span>
+        <span class="text-2xl">📞</span>
         <a href="tel:042202998" class="text-gray-800 font-semibold text-lg hover:text-blue-600">042202998 (Landline)</a>
-        <div class="absolute top-full left-0 mt-2 hidden group-hover:block bg-gray-800 text-white text-sm px-3 py-1 rounded shadow z-10">
-          Office landline number
-        </div>
       </div>
 
-      <!-- WhatsApp -->
       <div class="relative group flex items-start gap-4">
-        <span class="text-2xl cursor-pointer" title="Chat on WhatsApp">💬</span>
+        <span class="text-2xl">💬</span>
         <a href="https://wa.me/971522037095" target="_blank" class="flex items-center gap-2 text-green-600 font-semibold text-lg">
           <img src="WhatsApp.svg" alt="WhatsApp" class="w-6 h-6" />
           Chat on WhatsApp
         </a>
-        <div class="absolute top-full left-0 mt-2 hidden group-hover:block bg-gray-800 text-white text-sm px-3 py-1 rounded shadow z-10">
-          Start a WhatsApp conversation
-        </div>
       </div>
     </div>
 
     <!-- Contact Form -->
-    <form #contactForm="ngForm" (ngSubmit)="submitForm()" class="bg-white p-6 rounded-xl shadow-md space-y-4 border border-gray-200">
-      <input type="text" name="name" [(ngModel)]="contact.name" required placeholder="Your Name" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-300" />
-      <input type="email" name="email" [(ngModel)]="contact.email" required placeholder="Your Email" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-300" />
-      <textarea name="message" [(ngModel)]="contact.message" rows="5" required placeholder="Your Message" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-300"></textarea>
-      <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md text-lg font-semibold transition">Send Message</button>
+    <form #form="ngForm" (ngSubmit)="submitForm()" class="bg-white p-6 rounded-xl shadow-md space-y-4 border border-gray-200">
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="contact.name"
+        required
+        placeholder="Your Name"
+        class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-300"
+      />
+
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="contact.email"
+        required
+        placeholder="Your Email"
+        class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-300"
+      />
+
+      <textarea
+        name="message"
+        [(ngModel)]="contact.message"
+        required
+        rows="5"
+        placeholder="Your Message"
+        class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-300"
+      ></textarea>
+
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md text-lg font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Send Message
+      </button>
+
+      <!-- Success/Popup Message -->
+      <div
+        *ngIf="showPopup"
+        class="mt-4 bg-green-100 border border-green-400 text-green-800 px-4 py-3 rounded text-center transition-all duration-300"
+      >
+        {{ popupMessage }}
+      </div>
     </form>
+    <!-- Popup Message -->
+<div
+  *ngIf="showPopup"
+  class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-green-100 border border-green-500 text-green-800 px-6 py-3 rounded shadow-lg z-50 transition-opacity duration-300"
+>
+  {{ popupMessage }}
+</div>
   </div>
 </section>
